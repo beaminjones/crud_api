@@ -8,6 +8,12 @@ export const index = async (req: Request, res: Response) => {
   return res.status(200).json(response);
 };
 
+export const show = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const response = await ClientService.show(id);
+  return res.status(200).json(response);
+};
+
 //Rota que lista o filtro por documento
 export const search = async (req: Request, res: Response) => {
   let document = req.body.document;

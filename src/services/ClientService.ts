@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 type ClientType = {
     id?: string,
     name: string,
-    corporateReason: string,
+    companyName: string,
     email: string,
     password: string, 
     document: string,
@@ -18,6 +18,13 @@ type ClientType = {
 export const ClientService = {
     index: async () => {
         return await prisma.client.findMany();
+    },
+    show: async (id: any) => {
+        return await prisma.client.findUnique({
+            where: {
+                id: id
+            }
+        })
     },
     search: async (document: string) => {
         return await prisma.client.findFirst({ where: { document } });

@@ -1,10 +1,13 @@
 import express, {Request, Response} from 'express';
 import Routers from "./src/routes/router";
 import { json } from "body-parser";
+import cors from "cors";
+
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(json());
 app.use('/api', Routers);
 
